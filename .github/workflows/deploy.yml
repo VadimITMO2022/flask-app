@@ -29,7 +29,7 @@ jobs:
             git pull origin main && \
             
             # 6. Остановка старых контейнеров и удаление потерянных связей
-            sudo docker-compose down --remove-orphans && \
+            docker-compose down --remove-orphans && \
             
-            sudo docker-compose up --build -d
+            docker-compose up --build -d
           " 
