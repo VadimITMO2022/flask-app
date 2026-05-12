@@ -16,3 +16,23 @@ services:
     depends_on:
       - flask_app
     restart: always
+    
+
+
+services:
+  flask_app:
+    build: .                   # Указывает Docker собирать образ из Dockerfile в текущей папке
+    image: flask_app:latest    # Имя и тег, которые присвоятся собранному образу
+    container_name: flask_app
+    restart: always
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx_proxy
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - flask_app
+    restart: always   
