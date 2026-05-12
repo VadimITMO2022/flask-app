@@ -17,7 +17,7 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Deploy via SSH
-         run: |
+        run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "
             # 1. Создаем папку, если её нет
             mkdir -p ${{ secrets.PROJECT_DIR }} && \
